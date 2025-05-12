@@ -23,3 +23,14 @@ export const GET_COUNTRY = `
     }
   }
 `;
+
+export const ADD_COUNTRY = `
+  mutation AddCountry($data: NewCountryInput!) {
+  addCountry(data: $data) {
+    name
+    emoji
+    code
+    id
+    }
+  }
+`;
