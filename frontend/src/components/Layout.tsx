@@ -3,11 +3,11 @@ import { Header } from "./Header";
 
 export function PageLayout() {
   return (
-    <body>
+    <div className="min-h-screen">
       <Header />
       <main className="flex flex-col items-center justify-center p-8">
         <Outlet />
       </main>
-    </body>
+    </div>
   );
 }
