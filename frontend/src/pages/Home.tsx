@@ -1,3 +1,5 @@
+import { Countries } from "../components/Countries";
+
 export function HomePage() {
-  return <p>You should start working here!</p>;
+  return <Countries />;
 }
