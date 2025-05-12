@@ -83,7 +83,7 @@ export function NewCountryForm() {
               className="bg-white rounded-xs p-1 border border-gray-400 w-full max-w-[100%] sm:max-w-[70%] cursor-pointer h-[34px] hover:border-gray-500"
               required
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Select a continent
               </option>
               {continents.map((continent: ContinentType) => (
