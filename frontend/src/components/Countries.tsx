@@ -21,7 +21,7 @@ export function Countries() {
           className="flex flex-col items-center justify-center bg-[#F5F5F5] border-gray-300 border rounded-md p-2 w-[90px] max-w-[90px] cursor-pointer hover:bg-gray-200"
           title={country.code}
         >
-          <h3>{country.name}</h3>
+          <h2>{country.name}</h2>
           <p>{country.emoji}</p>
         </Link>
       ))}
