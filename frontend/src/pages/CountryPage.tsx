@@ -1,24 +1,33 @@
 import { gql, useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import { GET_COUNTRY } from "../gql/countries";
+import PageNotFound from "./NotFound";
 
 export function CountryPage() {
-  const { data, loading, error } = useQuery(gql(GET_COUNTRY));
+  const params = useParams();
+  const { data, loading } = useQuery(gql(GET_COUNTRY), {
+    variables: {
+      code: params.code?.toUpperCase(),
+    },
+  });
   const country = data?.country;
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (!country) {
+    return <PageNotFound message="Country not found" />;
+  }
 
   return (
-    <section>
-      <div
-        key={country.id}
-        aria-label={`Navigation vers les détails du pays: ${country.name}`}
-        className="flex flex-col items-center justify-center bg-[#F5F5F5] border-gray-300 border rounded-md p-2 w-[90px] max-w-[90px] cursor-pointer hover:bg-gray-200"
-        title={country.code}
-      >
-        <h3>{country.name}</h3>
-        <p>{country.emoji}</p>
-      </div>
+    <section
+      key={country.id}
+      className="flex flex-col items-center justify-center p-2 cursor-pointer gap-2"
+      title={country.code}
+    >
+      <span className="text-6xl font-bold">{country.emoji}</span>
+      <h3 className="mt-6">
+        Name: {country.name} ({country.code})
+      </h3>
+      <p>Continent: {country.continent.name}</p>
     </section>
   );
 }

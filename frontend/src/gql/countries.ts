@@ -10,8 +10,8 @@ export const GET_COUNTRIES = `
 `;
 
 export const GET_COUNTRY = `
-  query GetCountry($id: ID!) {
-    country(id: $id) {
+  query GetCountry($code: String!) {
+    country(code: $code) {
       name
       emoji
       id
